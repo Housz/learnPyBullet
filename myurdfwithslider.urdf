@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<robot name="robot_name">
+    <link name="base">
+       <visual>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<material name="white">
+				<color rgba="1 1 1 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+		</collision>
+		<inertial>
+			<mass value="0"/>
+			<origin rpy="0 0 0" xyz="0 0 0 "/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+    </link>  
+
+    <link name="body0">
+       <visual>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<material name="gray">
+				<color rgba="0.2 0.2 0.2 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<origin rpy="0 0 0" xyz="0 0 0 "/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+    </link>  
+
+
+    <link name="body1">
+       <visual>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="4 0 2"/>
+			<material name="red">
+				<color rgba="1 0 0 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="4 0 2"/>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<origin rpy="0 0 0" xyz="0 0 0 "/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+    </link>  
+
+    <link name="body2">
+       <visual>
+			<geometry>
+				<box size="5 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="-2 0 0"/>
+			<material name="green">
+				<color rgba="0 1 0 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="5 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="-2 0 0"/>
+		</collision>
+		<inertial>
+			<mass value="5"/>
+			<origin rpy="0 0 0" xyz="0 0 0 "/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+    </link>
+
+    <link name="body3">
+       <visual>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<material name="blue">
+				<color rgba="0 0 1 1"/>
+			</material>
+		</visual>
+		<collision>
+			<geometry>
+				<box size="1 1 1"/>
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+		</collision>
+		<inertial>
+			<mass value="1"/>
+			<origin rpy="0 0 0" xyz="0 0 0 "/>
+			<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+		</inertial>
+    </link>
+
+
+    <joint name="Hinge0" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="1000.0" lower="1" upper="-1" velocity="0.5"/>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
+		<parent link="base"/>
+		<child link="body0"/>
+	</joint>
+
+    <joint name="Slider" type="prismatic">
+		<axis xyz="4 0 2"/>
+		<limit effort="1000.0" lower="0" upper="6" velocity="0.5"/>
+		<origin rpy="0 0 0" xyz="0 0 0"/>
+		<parent link="body0"/>
+		<child link="body1"/>
+	</joint>
+
+	<joint name="Hinge1" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="1000.0" lower="1" upper="-1" velocity="0.5"/>
+		<origin rpy="0 0 0" xyz="4 0 2"/>
+		<parent link="body1"/>
+		<child link="body2"/>
+	</joint>
+
+	<joint name="Hinge2" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="1000.0" lower="1" upper="-1" velocity="0.5"/>
+		<origin rpy="0 0 0" xyz="-4 0 0"/>
+		<parent link="body2"/>
+		<child link="body3"/>
+	</joint>
+
+
+
+</robot>
